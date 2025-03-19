@@ -1,6 +1,7 @@
 import { useState } from "react";
 import supabase from "../services/supabase";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 function CreateTaskView() {
   const [formState, setFormState] = useState({
@@ -17,9 +18,9 @@ function CreateTaskView() {
       .insert([formState])
       .then((response) => {
         if (response.error) {
-          alert(response.error.message);
+          toast.error("An error occurred while creating the task");
         } else {
-          alert("Task created successfully");
+          toast.success("Task created successfully");
           setFormState({ title: "", description: "" });
           navigate("/");
         }
