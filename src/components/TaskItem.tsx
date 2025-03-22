@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Task } from "../constants/types";
 import supabase from "../services/supabase";
-import { Trash } from "lucide-react";
+import { Pencil, Trash } from "lucide-react";
 import toast from "react-hot-toast";
+import { Link } from "react-router";
 
 function TaskItem({
   task,
@@ -56,6 +57,9 @@ function TaskItem({
         <button className="btn btn-circle btn-sm" onClick={handleDelete}>
           <Trash size={16} className="text-error" />
         </button>
+        <Link to={`/edit/${task.id}`} className="btn btn-circle btn-sm">
+          <Pencil size={16} className="text-primary" />
+        </Link>
       </div>
     </div>
   );

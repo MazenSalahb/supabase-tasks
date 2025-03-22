@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import supabase from "./services/supabase";
 import CreateTaskView from "./views/CreateTaskView";
 import { Toaster } from "react-hot-toast";
+import EditTaskView from "./views/EditTaskView";
 
 function App() {
   const checkAuth = useAuthStore((state) => state.checkAuth);
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeView />} />
         <Route path="/create" element={<CreateTaskView />} />
+        <Route path="/edit/:id" element={<EditTaskView />} />
       </Routes>
       <Toaster />
     </>
